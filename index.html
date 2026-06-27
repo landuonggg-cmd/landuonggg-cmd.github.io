@@ -17,45 +17,53 @@
     --white: #fff;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Segoe UI',Arial,sans-serif; color:var(--black); background:var(--white); font-size:15px; line-height:1.6; }
+  html { overflow-x:hidden; }
+  body { font-family:'Segoe UI',Arial,sans-serif; color:var(--black); background:var(--white); font-size:15px; line-height:1.6; overflow-x:hidden; }
 
-  nav { background:var(--black); padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between; height:50px; position:sticky; top:0; z-index:200; }
-  .nav-logo { color:var(--white); font-weight:700; font-size:14px; }
+  .container { max-width:1100px; margin:0 auto; width:100%; }
+
+  nav { background:var(--black); padding:0 1.5rem; height:50px; position:sticky; top:0; z-index:200; }
+  .nav-inner { max-width:1100px; margin:0 auto; width:100%; height:100%; display:flex; align-items:center; justify-content:space-between; }
+  .nav-logo { color:var(--white); font-weight:700; font-size:14px; white-space:nowrap; }
   .nav-logo span { color:var(--red); }
   .nav-links { display:flex; gap:1.25rem; }
-  .nav-links a { color:rgba(255,255,255,0.65); text-decoration:none; font-size:12px; padding:4px 0; border-bottom:2px solid transparent; transition:all 0.2s; }
+  .nav-links a { color:rgba(255,255,255,0.65); text-decoration:none; font-size:12px; padding:4px 0; border-bottom:2px solid transparent; transition:all 0.2s; white-space:nowrap; }
   .nav-links a:hover, .nav-links a.active { color:var(--white); border-bottom-color:var(--red); }
 
-  .hero { background:var(--black); color:var(--white); padding:3.5rem 1.5rem 0; text-align:center; }
-  .hero-avatar { width:72px; height:72px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:700; color:var(--white); margin:0 auto 1.25rem; }
-  .hero h1 { font-size:26px; font-weight:700; margin-bottom:4px; }
-  .hero-sub { font-size:12px; color:var(--gray); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:1rem; }
-  .hero-summary { max-width:580px; margin:0 auto 1.75rem; font-size:13.5px; color:rgba(255,255,255,0.75); line-height:1.8; }
-  .hero-contacts { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; padding-bottom:2.5rem; }
+  .hero { background:var(--black); color:var(--white); }
+  .hero-inner { max-width:1100px; margin:0 auto; padding:3rem 1.5rem 2.5rem; display:flex; flex-direction:column; align-items:center; text-align:center; gap:1.25rem; }
+  .hero-left { display:flex; flex-direction:column; align-items:center; }
+  .hero-avatar { width:130px; height:130px; border-radius:50%; overflow:hidden; border:4px solid var(--red); margin:0 auto 1.25rem; flex-shrink:0; }
+  .hero-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+  .hero h1 { font-size:clamp(22px,4vw,26px); font-weight:700; margin-bottom:4px; }
+  .hero-sub { font-size:12px; color:var(--gray); letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; }
+  .hero-right { display:flex; flex-direction:column; align-items:center; gap:1rem; }
+  .hero-summary { max-width:520px; font-size:13.5px; color:rgba(255,255,255,0.75); line-height:1.8; }
+  .hero-contacts { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
   .hero-contacts a { color:rgba(255,255,255,0.8); text-decoration:none; font-size:12px; background:rgba(255,255,255,0.08); padding:5px 14px; border-radius:20px; border:1px solid rgba(255,255,255,0.15); transition:all 0.2s; }
   .hero-contacts a:hover { background:rgba(235,0,40,0.25); border-color:var(--red); color:var(--white); }
   .red-bar { height:4px; background:var(--red); }
 
-  .stats { display:flex; justify-content:center; background:var(--white); border-bottom:1px solid var(--gray-mid); }
-  .stat { text-align:center; padding:1rem 2rem; border-right:1px solid var(--gray-mid); }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); max-width:1100px; margin:0 auto; background:var(--white); border-bottom:1px solid var(--gray-mid); }
+  .stat { text-align:center; padding:1rem 1.5rem; border-right:1px solid var(--gray-mid); }
   .stat:last-child { border-right:none; }
   .stat-num { font-size:20px; font-weight:700; color:var(--red); }
   .stat-label { font-size:10px; color:var(--gray); text-transform:uppercase; letter-spacing:0.5px; }
 
   .why-wrap { padding:1.5rem; }
-  .why-banner { background:var(--red-pale); border-left:4px solid var(--red); padding:1rem 1.25rem; border-radius:0 8px 8px 0; cursor:pointer; user-select:none; }
+  .why-banner { max-width:1100px; margin:0 auto; background:var(--red-pale); border-left:4px solid var(--red); padding:1rem 1.25rem; border-radius:0 8px 8px 0; cursor:pointer; user-select:none; }
   .why-header { display:flex; justify-content:space-between; align-items:center; }
   .why-title { color:var(--red-dark); font-size:11px; text-transform:uppercase; letter-spacing:1px; font-weight:700; }
   .why-arrow { color:var(--red); font-size:16px; transition:transform 0.3s; }
   .why-arrow.open { transform:rotate(180deg); }
   .why-body { overflow:hidden; max-height:0; transition:max-height 0.3s ease, margin 0.3s ease; }
-  .why-body.open { max-height:200px; margin-top:0.75rem; }
+  .why-body.open { max-height:420px; margin-top:0.75rem; }
   .why-body p { color:var(--gray-text); font-size:13.5px; line-height:1.7; }
 
   section { padding:2rem 1.5rem; }
   section:nth-child(even) { background:var(--gray-light); }
   .sec-label { font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:var(--red); font-weight:700; margin-bottom:4px; }
-  .sec-title { font-size:18px; font-weight:700; color:var(--black); display:inline-block; padding-bottom:6px; border-bottom:2px solid var(--red); margin-bottom:1.25rem; }
+  .sec-title { font-size:clamp(16px,2.2vw,18px); font-weight:700; color:var(--black); display:inline-block; padding-bottom:6px; border-bottom:2px solid var(--red); margin-bottom:1.25rem; }
 
   .filter-tabs { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:1.25rem; }
   .ftab { font-size:12px; padding:5px 14px; border-radius:20px; border:1px solid var(--gray-mid); background:var(--white); color:var(--gray-text); cursor:pointer; transition:all 0.2s; display:inline-block; line-height:1.4; }
@@ -66,7 +74,7 @@
   .project-card { background:var(--white); border:1px solid var(--gray-mid); border-radius:8px; overflow:hidden; transition:all 0.2s; }
   .project-card:hover { box-shadow:0 4px 20px rgba(235,0,40,0.12); transform:translateY(-2px); }
   .project-card.hidden { display:none; }
-  .card-header { background:var(--black); padding:0.875rem 1rem; border-left:4px solid var(--red); }
+  .card-header { background:var(--black); padding:0.875rem 1rem; border-left:4px solid var(--red); min-height:88px; display:flex; flex-direction:column; justify-content:center; }
   .card-type-label { font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--gray); margin-bottom:3px; }
   .card-title { color:var(--white); font-size:13px; font-weight:600; line-height:1.4; }
   .card-body { padding:0.875rem 1rem; }
@@ -130,38 +138,128 @@
   footer { background:var(--black); color:rgba(255,255,255,0.45); text-align:center; padding:1.25rem; font-size:11px; border-top:3px solid var(--red); }
   footer a { color:rgba(255,255,255,0.65); text-decoration:none; }
   footer a:hover { color:var(--red); }
+
+  @media (max-width:700px) {
+    .stats { display:grid; grid-template-columns:repeat(2,1fr); }
+    .stat { border-right:1px solid var(--gray-mid); border-bottom:1px solid var(--gray-mid); padding:0.875rem 0.5rem; }
+    .stat:nth-child(2n) { border-right:none; }
+    .stat:nth-last-child(-n+2) { border-bottom:none; }
+  }
+
+  @media (max-width:560px) {
+    nav { padding:0 1rem; }
+    .nav-logo { font-size:11.5px; }
+    .nav-links { gap:0.65rem; }
+    .nav-links a { font-size:10.5px; }
+    .hero-inner { padding:2.5rem 1rem 2rem; }
+    .hero-summary { font-size:13px; }
+    section { padding:1.5rem 1rem; }
+    .why-wrap { padding:1rem; }
+    .modal-header { padding:1rem 1.25rem; }
+    .modal-body { padding:1.25rem 1rem; }
+  }
+
+  /* Desktop: hero switches from a centered stack to a side-by-side layout so it uses the
+     full content width instead of floating as a narrow column in a wide dark panel. */
+  @media (min-width:880px) {
+    .hero-inner { flex-direction:row; align-items:center; justify-content:space-between; text-align:left; gap:3rem; padding:3.5rem 1.5rem; }
+    .hero-left { align-items:flex-start; flex:0 0 auto; }
+    .hero-avatar { margin:0 0 1.25rem 0; }
+    .hero-right { align-items:flex-start; text-align:left; flex:1 1 480px; max-width:560px; gap:1.1rem; }
+    .hero-summary { max-width:none; }
+    .hero-contacts { justify-content:flex-start; }
+    .hero h1 { font-size:30px; }
+    .hero-avatar { width:170px; height:170px; }
+    .hero-summary { font-size:14px; }
+  }
+
+  /* Scale up for desktop / large monitors so content isn't a tiny island in a sea of empty margin */
+  @media (min-width:1300px) {
+    .container, .nav-inner, .why-banner, .stats, .hero-inner { max-width:1280px; }
+    body { font-size:16px; }
+    nav { height:58px; }
+    .nav-logo { font-size:15px; }
+    .nav-links { gap:1.5rem; }
+    .nav-links a { font-size:13px; }
+    .hero-inner { padding:4.5rem 1.5rem; gap:4rem; }
+    .hero-avatar { width:190px; height:190px; }
+    .hero h1 { font-size:36px; }
+    .hero-sub { font-size:13px; }
+    .hero-right { max-width:620px; }
+    .hero-summary { font-size:15px; }
+    .hero-contacts a { font-size:13px; padding:6px 16px; }
+    .stat { padding:1.5rem 2rem; }
+    .stat-num { font-size:25px; }
+    .sec-title { font-size:20px; }
+    .why-body p { font-size:14.5px; }
+    .projects-grid { grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem; }
+    .skills-grid { grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1.25rem; }
+    .card-title { font-size:14px; }
+    .card-desc { font-size:13.5px; }
+    .exp-role, .edu-degree { font-size:15px; }
+    .modal { max-width:700px; }
+  }
+
+  @media (min-width:1700px) {
+    .container, .nav-inner, .why-banner, .stats, .hero-inner { max-width:1500px; }
+    body { font-size:17px; }
+    .hero-inner { padding:5.5rem 1.5rem; gap:4.5rem; }
+    .hero-avatar { width:210px; height:210px; }
+    .hero h1 { font-size:42px; }
+    .hero-sub { font-size:14px; }
+    .hero-right { max-width:680px; }
+    .hero-summary { font-size:16px; }
+    .sec-title { font-size:22px; }
+    .stat-num { font-size:27px; }
+    .stat { padding:1.75rem 2.5rem; }
+    .projects-grid { grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); }
+    .skills-grid { grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); }
+    .modal { max-width:760px; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">Duong Duy <span>Lan</span></div>
-  <div class="nav-links">
-    <a href="#projects" class="nav-link">Projects</a>
-    <a href="#experience" class="nav-link">Experience</a>
-    <a href="#skills" class="nav-link">Skills</a>
-    <a href="#education" class="nav-link">Education</a>
+  <div class="nav-inner">
+    <div class="nav-logo">Duong Duy <span>Lan</span></div>
+    <div class="nav-links">
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#education" class="nav-link">Education</a>
+    </div>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="hero-avatar">DL</div>
-  <h1>Duong Duy Lan</h1>
-  <div class="hero-sub">International Business · Logistics &amp; Supply Chain</div>
-  <p class="hero-summary">Bachelor of Business graduate from RMIT University Vietnam (top 5% of cohort). I genuinely enjoy solving complex problems — breaking them down systematically, deep-diving into root causes, and using data to validate or challenge my thinking. Seeking challenges where international complexity and scale push my thinking to its fullest potential.</p>
-  <div class="hero-contacts">
-    <a href="mailto:landuonggg@gmail.com">✉ landuonggg@gmail.com</a>
-    <a href="http://www.linkedin.com/in/landuong04" target="_blank">in LinkedIn</a>
-    <a href="tel:0869667616">☎ 0869 667 616</a>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-avatar"><img src="profile-avatar.jpg" alt="Duong Duy Lan">
+        <!-- profile-avatar.jpg must be in the same directory as
+             index.html on GitHub Pages. Confirm before publishing. -->
+      </div>
+      <h1>Duong Duy Lan</h1>
+      <div class="hero-sub">International Business · Logistics &amp; Supply Chain</div>
+    </div>
+    <div class="hero-right">
+      <p class="hero-summary">Graduated top 10% of cohort at RMIT University Vietnam with a degree in International Business and a minor in Logistics &amp; Supply Chain Management. My academic projects and hands-on operations at GHN both pulled me toward the same conclusion: I think clearly under complexity, and I care about getting the details right — because that is what reliable service is built on. International freight forwarding is where those strengths belong.</p>
+      <div class="hero-contacts">
+        <a href="mailto:landuonggg@gmail.com" class="copy-email" data-email="landuonggg@gmail.com" title="Click to copy email">✉ landuonggg@gmail.com</a>
+        <a href="https://www.linkedin.com/in/landuonggg" target="_blank" rel="noopener">in LinkedIn</a>
+        <a href="tel:0869667616">☎ 0869 667 616</a>
+        <a href="resume.pdf" target="_blank" rel="noopener">↓ Résumé (PDF)</a>
+      </div>
+    </div>
   </div>
 </div>
 <div class="red-bar"></div>
 
 <div class="stats">
-  <div class="stat"><div class="stat-num" id="cnt1">0</div><div class="stat-label">Years training</div></div>
-  <div class="stat"><div class="stat-num" id="cnt2">0</div><div class="stat-label">Major projects</div></div>
-  <div class="stat"><div class="stat-num">Top 5%</div><div class="stat-label">Of cohort</div></div>
-  <div class="stat"><div class="stat-num">IELTS 6.5</div><div class="stat-label">English</div></div>
+  <div class="stat"><div class="stat-num" id="cnt1">0</div><div class="stat-label">High Distinctions</div></div>
+  <div class="stat"><div class="stat-num" id="cnt2">0</div><div class="stat-label">Featured projects</div></div>
+  <div class="stat"><div class="stat-num">Top 10%</div><div class="stat-label">Of cohort</div></div>
+  <div class="stat"><div class="stat-num">Distinction</div><div class="stat-label">Graduate</div></div>
 </div>
 
 <div class="why-wrap">
@@ -171,12 +269,32 @@
       <div class="why-arrow" id="why-arrow">▼</div>
     </div>
     <div class="why-body" id="why-body">
-      <p>Expeditors' scale — 335 locations, 100 countries, unified technology systems — is precisely the kind of complex, cross-functional environment where structured analytical thinking creates real value. I am not looking for a comfortable starting point. I am looking for one that demands the most of my problem-solving approach from day one, and offers a clear path to build deep expertise in international freight forwarding over the long term.</p>
+      <p>Looking back at my university projects together, there's a pattern I didn't fully notice until I lined them up: I kept choosing harder, more operationally complex logistics problems — diagnosing bottlenecks in FedEx's Barcelona sorting terminal, designing a cold-chain warehouse from the ground up, then modelling a last-mile delivery network for Hanoi. That wasn't accidental. I'm genuinely pulled toward this kind of work — not because the complexity is interesting on its own, but because solving it carefully is what makes service reliable for the customer at the other end of the shipment. International freight forwarding, with its customs regimes, multi-modal coordination, and cross-border regulation, is where that kind of thinking matters most, every day. Expeditors' scale — 335 locations across 100 countries — and its People–Service–Profit philosophy are exactly the environment where that expertise gets built properly: over years, through a promote-from-within model, not in a few months. I'm not looking to arrive with ready-made answers — I want to learn how international freight actually works from the ground up.</p>
     </div>
   </div>
 </div>
 
+<section id="experience">
+  <div class="container">
+  <div class="sec-label">Work history</div>
+  <div class="sec-title">Experience</div>
+  <div class="exp-item">
+    <div class="exp-header">
+      <div><div class="exp-role">Operations Team Leader Trainee</div><div class="exp-company">Giao Hang Nhanh (GHN)</div></div>
+      <div class="exp-date">Apr 2026 – Jun 2026 · Hanoi</div>
+    </div>
+    <ul class="exp-bullets">
+      <li>Came in wanting to learn last-mile operations from the ground up rather than from a head office — sorting, inventory management, delivery documentation, and dispatch in a high-volume environment.</li>
+      <li>Delivered parcels directly to customers, which gave me a firsthand, ground-level view of what good last-mile service looks like to the person receiving it — and what it looks like when it falls short.</li>
+      <li>Applied structured problem-solving frameworks to operational and people management situations, staying steady and methodical even when the pace of a high-volume environment made that harder.</li>
+      <li>Built foundational people management skills — team communication, performance tracking, and structured onboarding design — out of genuine curiosity about how the people side of operations is run, not just the process side.</li>
+    </ul>
+  </div>
+  </div>
+</section>
+
 <section id="projects">
+  <div class="container">
   <div class="sec-label">Portfolio</div>
   <div class="sec-title">University projects</div>
   <div class="filter-tabs" id="proj-filters">
@@ -224,7 +342,7 @@
         <div class="card-date">Jul – Sep 2025</div>
         <p class="card-desc">Designed a 15,000m² cold-chain warehouse layout. Optimized material flow, temperature zoning, and integrated RFID/WMS tracking.</p>
         <div class="card-tags"><span class="tag">Warehouse Layout</span><span class="tag">WMS/RFID</span><span class="tag">Material Flow</span><span class="tag">SKU Handling</span></div>
-        <div class="card-score">Distinction level</div>
+        <div class="card-score">70+ · Distinction</div>
         <button class="card-expand-btn" data-project="warehouse">Read full case study ▸</button>
       </div>
     </div>
@@ -242,26 +360,11 @@
       </div>
     </div>
   </div>
-</section>
-
-<section id="experience">
-  <div class="sec-label">Work history</div>
-  <div class="sec-title">Experience</div>
-  <div class="exp-item">
-    <div class="exp-header">
-      <div><div class="exp-role">Operations Team Leader Trainee</div><div class="exp-company">Giao Hang Nhanh (GHN)</div></div>
-      <div class="exp-date">Apr 2026 – Jun 2026 · Hanoi</div>
-    </div>
-    <ul class="exp-bullets">
-      <li>Gained hands-on exposure to end-to-end last-mile operations — sorting, inventory management, delivery documentation, and dispatch in a high-volume environment.</li>
-      <li>Delivered parcels directly to customers, developing firsthand understanding of last-mile service quality and customer expectations.</li>
-      <li>Applied structured problem-solving frameworks in operational and people management contexts.</li>
-      <li>Developed foundational people management skills including team communication, performance tracking, and structured onboarding design.</li>
-    </ul>
   </div>
 </section>
 
 <section id="skills">
+  <div class="container">
   <div class="sec-label">Capabilities</div>
   <div class="sec-title">Skills &amp; tools</div>
   <div class="filter-tabs" id="skill-filters">
@@ -292,7 +395,7 @@
       <div class="skill-item">MS Excel <span class="skill-level lv-adv">Advanced</span></div>
       <div class="skill-item">Python <span class="skill-level lv-conf">Confident</span></div>
       <div class="skill-item">R Studio <span class="skill-level lv-conf">Confident</span></div>
-      <div class="skill-item">AI productivity tools <span class="skill-level lv-adv">Advanced</span></div>
+      <div class="skill-item">AI tools for productivity</div>
     </div>
     <div class="skill-group" data-scat="soft">
       <div class="skill-group-title">Soft Skills</div>
@@ -304,9 +407,11 @@
       <div class="skill-item">Adaptability</div>
     </div>
   </div>
+  </div>
 </section>
 
 <section id="education">
+  <div class="container">
   <div class="sec-label">Academic background</div>
   <div class="sec-title">Education</div>
   <div class="edu-item">
@@ -314,15 +419,16 @@
     <div class="edu-school">RMIT University Vietnam · Minor: Logistics &amp; Supply Chain Management</div>
     <div class="edu-detail">Hanoi, Vietnam · April 2026 · GPA: 3.2/4.0</div>
     <div class="edu-badges">
-      <span class="edu-badge b-red">Top 5% of cohort</span>
+      <span class="edu-badge b-red">Top 10% of cohort</span>
       <span class="edu-badge b-gray">9 major projects</span>
       <span class="edu-badge b-gray">Distinction graduate</span>
     </div>
   </div>
+  </div>
 </section>
 
 <footer>
-  Duong Duy Lan · Hanoi, Vietnam · <a href="mailto:landuonggg@gmail.com">landuonggg@gmail.com</a> · <a href="https://landuonggg.github.io" target="_blank">landuonggg.github.io</a>
+  Duong Duy Lan · Hanoi, Vietnam · <a href="mailto:landuonggg@gmail.com" class="copy-email" data-email="landuonggg@gmail.com" title="Click to copy email">landuonggg@gmail.com</a> · <a href="https://landuonggg.github.io" target="_blank" rel="noopener">landuonggg.github.io</a>
 </footer>
 
 <div class="modal-overlay" id="modal-overlay">
@@ -338,7 +444,7 @@
       <div class="modal-section"><div class="modal-section-title">Methodology &amp; approach</div><div class="modal-text" id="modal-method"></div></div>
       <div class="modal-section"><div class="modal-section-title">Key findings &amp; outcomes</div><div class="modal-text" id="modal-outcome"></div></div>
       <div class="modal-section"><div class="modal-section-title">Skills applied</div><div class="modal-tags" id="modal-tags"></div></div>
-      <a class="modal-link" id="modal-link" href="#" target="_blank">View full report ↗</a>
+      <a class="modal-link" id="modal-link" href="#" target="_blank" rel="noopener">View full report ↗</a>
     </div>
   </div>
 </div>
@@ -368,11 +474,11 @@ var projects = {
   warehouse: {
     type:"Group (Team of 5) · Warehouse · Jul–Sep 2025",
     title:"Cold-Chain Warehouse Design Project",
-    score:"Distinction level", typeTag:"Group", date:"Jul – Sep 2025",
+    score:"70+ · Distinction", typeTag:"Group", date:"Jul – Sep 2025",
     overview:"Designed a 15,000m² cold-storage warehouse in Ho Chi Minh City to support Vietnam's growing avocado supply chain. The goal was to manage multiple product types, maintain strict temperature controls, and deliver efficient receiving, storage, value-added services, and distribution operations across 24 unique SKUs.",
     method:"Evaluated five racking options using Richard's decision tree and cost-sensitivity analysis. Selected Narrow-aisle adjustable pallet racking (APR) for accessibility and cold-chain compliance. Designed the I-shaped flow layout with separated inbound/outbound staging, RFID portals, and Oracle WMS integration. Contributed to 2D floor plan, temperature zoning, and airlock placement.",
     outcome:"Financial assessment projected 18.5% ROI with a six-year break-even. Risk analysis identified power reliability as critical — proposed dual-backup generator and battery system to ensure cold-chain stability. Awarded Distinction for analytical execution and systems thinking.",
-    tags:["Warehouse Layout","Space Utilization","SKU Handling","Material Flow","AI-Assisted Analysis","WMS/RFID"],
+    tags:["Warehouse Layout","Space Utilization","SKU Handling","Material Flow","WMS/RFID"],
     link:"https://drive.google.com/file/d/1dwIM6WJPr3a3iPJgnTmnSbK7agxztQF5/view?usp=sharing"
   },
   urban: {
@@ -386,6 +492,25 @@ var projects = {
     link:"https://drive.google.com/file/d/1PeIoyNKHL4ppbvPJI31X5xOcEFgbvIA4/view?usp=sharing"
   }
 };
+
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('.copy-email');
+  if (!el) return;
+  e.preventDefault();
+  var email = el.getAttribute('data-email');
+  var original = el.textContent;
+  function showCopied() {
+    el.textContent = 'Copied!';
+    setTimeout(function() { el.textContent = original; }, 1500);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(email).then(showCopied).catch(function() {
+      window.location.href = 'mailto:' + email;
+    });
+  } else {
+    window.location.href = 'mailto:' + email;
+  }
+});
 
 document.getElementById('proj-filters').addEventListener('click', function(e) {
   var tab = e.target.closest('.ftab');
@@ -454,8 +579,8 @@ var obs = new IntersectionObserver(function(entries) {
       var v1 = parseInt(c1.textContent) + 1;
       var v2 = parseInt(c2.textContent) + 1;
       if (v1 <= 3) c1.textContent = v1;
-      if (v2 <= 9) c2.textContent = v2;
-      if (v1 >= 3 && v2 >= 9) clearInterval(t);
+      if (v2 <= 4) c2.textContent = v2;
+      if (v1 >= 3 && v2 >= 4) clearInterval(t);
     }, 120);
     obs.disconnect();
   }
@@ -463,7 +588,7 @@ var obs = new IntersectionObserver(function(entries) {
 obs.observe(document.querySelector('.stats'));
 
 window.addEventListener('scroll', function() {
-  ['projects','experience','skills','education'].forEach(function(id) {
+  ['experience','projects','skills','education'].forEach(function(id) {
     var el = document.getElementById(id);
     if (!el) return;
     var r = el.getBoundingClientRect();
